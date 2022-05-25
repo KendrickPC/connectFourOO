@@ -113,3 +113,15 @@ Note: This step is quite simple - just chance WIDTH to this.WIDTH and HEIGHT to 
 How to console.log(this) => [Object Object]
 ### console.log(JSON.stringify(result))
 [Console.log(this)](https://stackoverflow.com/questions/41336663/console-logresult-returns-object-object-how-do-i-get-result-name)
+
+6. Inside makeHtmlBoard() function,
+
+```js
+makeHtmlBoard() {
+  // ...
+  this.handleGameClick = this.handleClick.bind(this);
+  top.addEventListener('click', this.handleGameClick);
+  // Make sure to overwrite the addEventListener click attached to top.
+}
+
+```

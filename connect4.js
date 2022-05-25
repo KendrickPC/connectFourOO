@@ -62,33 +62,26 @@ class Game {
   }
 
   placeInTable(y, x) {
-
     const piece = document.createElement('div');
     piece.classList.add('piece');
     piece.classList.add(`p${this.currPlayer}`);
     piece.style.top = -50 * (y + 2);
-  
     const spot = document.getElementById(`${y}-${x}`);
     spot.append(piece);
   }
 
   endGame(msg) {
-
     alert(msg);
   }
 
   handleClick(evt) {
     // get x from ID of clicked cell
-    console.log(`handleClick ${this}`)
-    console.log(JSON.stringify(this))
     const x = +evt.target.id;
-  
     // get next spot in column (if none, ignore click)
     const y = this.findSpotForCol(x);
     if (y === null) {
       return;
     }
-  
     // place piece in board and add to HTML table
     this.board[y][x] = this.currPlayer;
     this.placeInTable(y, x);
@@ -104,6 +97,7 @@ class Game {
     }
       
     // switch players
+    console.log(this.currPlayer);
     this.currPlayer = this.currPlayer === 1 ? 2 : 1;
   }
 
