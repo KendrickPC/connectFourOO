@@ -7,7 +7,6 @@ class Game {
     this.currPlayer = 1;
     this.makeBoard();
     this.makeHtmlBoard();
-
   }
 
   makeBoard() {
@@ -88,6 +87,7 @@ class Game {
     
     // check for win
     if (this.checkForWin()) {
+      alert("HERE")
       return this.endGame(`Player ${currPlayer} won!`);
     }
     
@@ -102,7 +102,7 @@ class Game {
   }
 
   checkForWin() {
-    function _win(cells) {
+    const _win = (cells) => {
       // Check four cells to see if they're all color of current player
       //  - cells: list of four (y, x) cells
       //  - returns true if all are legal coordinates & all match currPlayer
@@ -111,7 +111,7 @@ class Game {
           y >= 0 &&
           y < this.HEIGHT &&
           x >= 0 &&
-          x < WIDTH &&
+          x < this.WIDTH &&
           this.board[y][x] === this.currPlayer
       );
     }
