@@ -1,3 +1,5 @@
+console.log("What is this?")
+
 class Game {
   constructor(HEIGHT=7, WIDTH=6) {
     this.HEIGHT = HEIGHT;
@@ -9,23 +11,28 @@ class Game {
   }
 
   makeBoard() {
+    console.log(`makeBoard this=${this}`);
+    console.log(JSON.stringify(this))
     this.board = []; // array of rows, each row is array of cells  (board[y][x])
     for (let y = 0; y < this.HEIGHT; y++) {
       this.board.push(Array.from({ length: this.WIDTH }));
     }
   }
-
+  
   makeHtmlBoard() {
     const board = document.getElementById('board');
     // make column tops (clickable area for adding a piece to that column)
     const top = document.createElement('tr');
+
     top.setAttribute('id', 'column-top');
 
+    this.handleGameClick = this.handleClick.bind(this);
+    top.addEventListener('click', this.handleGameClick)
     console.log(`makeHtmlBoard this=${this}`);
+    console.log(JSON.stringify(this))
+    
 
-    // this.handleGameClick = this.handleClick.bind(this);
-
-    top.addEventListener('click', this.handleClick);
+    // top.addEventListener('click', this.handleClick);
     
     for (let x = 0; x < this.WIDTH; x++) {
       const headCell = document.createElement('td');
@@ -55,6 +62,7 @@ class Game {
   }
 
   placeInTable(y, x) {
+
     const piece = document.createElement('div');
     piece.classList.add('piece');
     piece.classList.add(`p${this.currPlayer}`);
@@ -65,12 +73,14 @@ class Game {
   }
 
   endGame(msg) {
+
     alert(msg);
   }
 
   handleClick(evt) {
     // get x from ID of clicked cell
-    console.log(`evt = ${evt}`)
+    console.log(`handleClick ${this}`)
+    console.log(JSON.stringify(this))
     const x = +evt.target.id;
   
     // get next spot in column (if none, ignore click)

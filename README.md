@@ -107,3 +107,9 @@ Following step 3's pattern, we will add makeHtmlBoard into our Game class:
 Note: This step is quite simple - just chance WIDTH to this.WIDTH and HEIGHT to this.HEIGHT.
 
 5. Move findSpotForCol(x) function into Game class. This is also just a simple refactoring. Change HEIGHT to this.HEIGHT (to reference HEIGHT properly).
+
+
+# Notes to Self:
+How to console.log(this) => [Object Object]
+### console.log(JSON.stringify(result))
+[Console.log(this)](https://stackoverflow.com/questions/41336663/console-logresult-returns-object-object-how-do-i-get-result-name)
